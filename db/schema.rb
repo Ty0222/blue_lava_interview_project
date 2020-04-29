@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_29_183832) do
+ActiveRecord::Schema.define(version: 2020_04_29_195533) do
 
   create_table "populations", force: :cascade do |t|
     t.date "year"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_04_29_183832) do
     t.string "response"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "response_source"
   end
 
 end

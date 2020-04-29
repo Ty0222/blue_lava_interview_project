@@ -3,6 +3,7 @@
   <tr>
     <th>Query</th>
     <th>Response</th>
+    <th>Response Source</th>
   </tr>
 
   <% if query_logs.load.empty? %>
@@ -16,6 +17,7 @@
     <tr>
       <td><%= log.query %></td>
       <td><%= log.response %></td>
+      <td><%= log.response_source %></td>
     </tr>
   <% end %>
 </table>
