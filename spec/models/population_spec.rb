@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Population, type: :model do
+  describe "associations" do
+    it { is_expected.to have_many(:population_query_logs) }
+    it { is_expected.to have_many(:requests).through(:population_query_logs) }
+  end
 
   describe ".min_year" do
     it "should return earliest year available" do
