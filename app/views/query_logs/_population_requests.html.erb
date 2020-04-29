@@ -1,0 +1,14 @@
+<h1>Known Population Requests</h1>
+<table class="query-log-table">
+  <tr>
+    <th>Population Year</th>
+    <th>Number of Requests</th>
+  </tr>
+
+  <% populations.each do |population| %>
+    <tr>
+      <td><%= population.year.year %></td>
+      <td><%= population.requests.size %></td>
+    </tr>
+  <% end %>
+</table>
