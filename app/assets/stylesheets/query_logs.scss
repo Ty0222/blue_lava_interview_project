@@ -1,0 +1,8 @@
+.query-log-table {
+  margin-bottom: 50px;
+
+  th:not(:first-of-type),
+  td:not(:first-of-type) {
+    padding-left: 50px;
+  }
+}
