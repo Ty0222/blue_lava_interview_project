@@ -7,6 +7,7 @@ class Population < ApplicationRecord
 
   def self.get(year)
     return 0 if year.to_i < min_year
+    return Population.order(year: :asc).last.population if year.to_i > KNOWN_YEARS.last
 
     target_date = Date.new(year.to_i)
     min_date = Date.new(min_year)
