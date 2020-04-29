@@ -1,4 +1,5 @@
 class Population < ApplicationRecord
+  KNOWN_YEARS = [1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990]
 
   def self.min_year
     Population.all.map(&:year).min.year
