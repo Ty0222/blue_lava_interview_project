@@ -1,4 +1,6 @@
 # https://www.census.gov/population/www/censusdata/files/urpop0090.txt
+return if Rails.env.test? && Population.any?
+
 Population.create(year: Date.new(1900), population: 76_212_168)
 Population.create(year: Date.new(1910), population: 92_228_496)
 Population.create(year: Date.new(1920), population: 106_021_537)
