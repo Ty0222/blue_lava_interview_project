@@ -1,3 +1,7 @@
 <%= render "query_logs", query_logs: query_logs %>
 <%= render "population_requests", populations: populations %>
 <%= link_to "Search Populations", populations_path %>
+
+<script type="text/javascript">
+  QueryLogController.index();
+</script>
