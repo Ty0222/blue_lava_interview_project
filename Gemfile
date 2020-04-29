@@ -36,6 +36,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Install rspec for testing
   gem 'rspec-rails', '~> 3.8'
+  gem 'pry'
+  gem 'pry-rails'
 end
 
 group :development do
