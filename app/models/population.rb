@@ -2,6 +2,9 @@ class Population < ApplicationRecord
   KNOWN_YEARS = [1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990]
   YEAR_LIMIT = 2500
 
+  has_many :population_query_logs, inverse_of: :population
+  has_many :requests, through: :population_query_logs, class_name: "QueryLog", source: :query_log
+
   def self.min_year
     Population.all.map(&:year).min.year
   end
