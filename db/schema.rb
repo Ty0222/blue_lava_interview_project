@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_29_195533) do
+ActiveRecord::Schema.define(version: 2020_04_29_201739) do
+
+  create_table "population_query_logs", force: :cascade do |t|
+    t.integer "query_log_id"
+    t.integer "population_id"
+    t.index ["population_id"], name: "index_population_query_logs_on_population_id"
+    t.index ["query_log_id"], name: "index_population_query_logs_on_query_log_id"
+  end
 
   create_table "populations", force: :cascade do |t|
     t.date "year"
