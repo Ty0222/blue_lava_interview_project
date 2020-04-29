@@ -3,6 +3,8 @@ class QueryLogsController < ApplicationController
 
   def index; end
 
+  private
+
   def query_logs
     @query_logs = QueryLog.all
   end
