@@ -1,5 +1,6 @@
-<%= render "query_logs", query_logs: query_logs %>
-<%= render "population_requests", populations: populations %>
+<div class="js-query-logs-refresh">
+  <%= render "index", query_logs: query_logs, populations: populations %>
+</div>
 <%= link_to "Search Populations", populations_path %>
 
 <script type="text/javascript">
