@@ -1,5 +1,6 @@
 class Population < ApplicationRecord
   KNOWN_YEARS = [1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990]
+  YEAR_LIMIT = 2500
 
   def self.min_year
     Population.all.map(&:year).min.year
@@ -9,12 +10,25 @@ class Population < ApplicationRecord
     sanitized_year = year.to_i
 
     return 0 if sanitized_year < min_year
-    return Population.order(year: :asc).last.population if sanitized_year > KNOWN_YEARS.last
+    return exponential_future_population_for(sanitized_year) if sanitized_year > KNOWN_YEARS.last
     return Population.find_by(year: Date.new(sanitized_year)).population if KNOWN_YEARS.include?(sanitized_year)
     population_for_unknown_year(sanitized_year)
   end
 
   private
+
+  def self.exponential_future_population_for(year)
+    target_year = year > YEAR_LIMIT ? YEAR_LIMIT : year
+    num_of_years = target_year - KNOWN_YEARS.last
+    growth_rate = 0.09
+    exponential_population = Population.find_by(year: Date.new(KNOWN_YEARS.last)).population
+
+    num_of_years.times do
+      exponential_population += exponential_population * growth_rate
+    end
+
+    exponential_population.round
+  end
 
   def self.population_for_unknown_year(year)
     population_of_previously_known_year = Population.find_by(year: Date.new(known_year_before_date(year))).population
