@@ -6,10 +6,12 @@ class Population < ApplicationRecord
   end
 
   def self.get(year)
-    return 0 if year.to_i < min_year
-    return Population.order(year: :asc).last.population if year.to_i > KNOWN_YEARS.last
-    return Population.find_by(year: Date.new(year.to_i)).population if KNOWN_YEARS.include?(year.to_i)
-    population_for_unknown_year(year)
+    sanitized_year = year.to_i
+
+    return 0 if sanitized_year < min_year
+    return Population.order(year: :asc).last.population if sanitized_year > KNOWN_YEARS.last
+    return Population.find_by(year: Date.new(sanitized_year)).population if KNOWN_YEARS.include?(sanitized_year)
+    population_for_unknown_year(sanitized_year)
   end
 
   private
@@ -50,8 +52,8 @@ class Population < ApplicationRecord
     known_year_after_date = nil
 
     KNOWN_YEARS.each do |known_year|
-      known_year_before_date = known_year if known_year < year.to_i
-      known_year_after_date = known_year if known_year > year.to_i
+      known_year_before_date = known_year if known_year < year
+      known_year_after_date = known_year if known_year > year
       break if known_year_after_date
     end
 
