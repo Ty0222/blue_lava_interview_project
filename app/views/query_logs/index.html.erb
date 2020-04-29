@@ -1,23 +1,2 @@
-<h1>Query Logs</h1>
-<table class="query-log-table">
-  <tr>
-    <th>Query</th>
-    <th>Response</th>
-  </tr>
-
-  <% if query_logs.load.empty? %>
-    <tr>
-      <td>N/A</td>
-      <td>N/A</td>
-    </tr>
-  <% end %>
-
-  <% query_logs.each do |log| %>
-    <tr>
-      <td><%= log.query %></td>
-      <td><%= log.response %></td>
-    </tr>
-  <% end %>
-</table>
-
+<%= render "query_logs", query_logs: query_logs %>
 <%= link_to "Search Populations", populations_path %>
