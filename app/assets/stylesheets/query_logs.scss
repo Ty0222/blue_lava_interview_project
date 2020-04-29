@@ -4,5 +4,6 @@
   th:not(:first-of-type),
   td:not(:first-of-type) {
     padding-left: 50px;
+    text-align: left;
   }
 }
