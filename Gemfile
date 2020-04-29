@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'jquery-rails'
 
+# Javascript helpers for consistent routes
+gem 'js-routes'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
